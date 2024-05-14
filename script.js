@@ -54,6 +54,11 @@ function removeBook(e) {
 function toggleReadStatus(e){
   const button = e.target
   const buttonText = button.textContent.trim();
+  if(buttonText == 'Not read'){
+    button.textContent = 'Read';
+  }else{
+    button.textContent = 'Not read';
+  }
   button.classList.toggle('not-read')
   button.classList.toggle('read')
 
