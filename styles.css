@@ -1,13 +1,67 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.read{
-  background-color: green;
+:root {
+  --light-grey: rgb(255, 251, 251);
+  --dark-grey: rgb(240, 238, 241);
+  --red: rgb(255, 156, 156);
+  --green: rgb(159, 255, 156);
 }
 
-.not-read{
-  background-color: red;
+body {
+  background-color: var(--dark-grey);
+}
+
+header {
+  background-color: var(--light-grey);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 25px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+}
+
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 30px;
+}
+
+.book-item {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+}
+
+.title {
+  text-decoration: underline;
+}
+
+.read-button,
+.remove-button {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-size: 25px;
+}
+
+
+.read {
+  background-color: var(--green);
+}
+
+.not-read {
+  background-color: var(--red);
 }

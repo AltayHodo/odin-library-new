@@ -30,7 +30,7 @@ function updateBookDisplay() {
       <button class="read-button ${readButtonClass}"> ${readButtonText} </button>
       <button class="remove-button" data-index="${index}"> Remove </button>
     `;
-    bookItem.style.border = '1px solid'
+    bookItem.classList.add('book-item');
     bookContainer.appendChild(bookItem);
   });
 
