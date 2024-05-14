@@ -51,18 +51,20 @@ function removeBook(e) {
   updateBookDisplay();
 }
 
-function toggleReadStatus(e){
+function toggleReadStatus(e) {
   const button = e.target
   const buttonText = button.textContent.trim();
-  if(buttonText == 'Not read'){
+  if (buttonText == 'Not read') {
     button.textContent = 'Read';
-  }else{
+  } else {
     button.textContent = 'Not read';
   }
   button.classList.toggle('not-read')
   button.classList.toggle('read')
 
 }
+
+const dialog = document.querySelector('.form-dialog');
 
 
 bookForm.addEventListener('submit', addNewBook);
@@ -76,7 +78,29 @@ function addNewBook(e) {
   addBookToLibrary(newBook);
   updateBookDisplay();
   bookForm.reset();
+  dialog.close();
+
 }
+
+const addBookButton = document.querySelector('.add-book-button');
+addBookButton.addEventListener('click', showDialog)
+
+function showDialog() {
+  dialog.showModal();
+}
+
+dialog.addEventListener("click", e => {
+  const dialogDimensions = dialog.getBoundingClientRect();
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    dialog.close();
+    bookForm.reset();
+  }
+})
 
 
 
