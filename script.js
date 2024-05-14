@@ -33,9 +33,15 @@ function updateBookDisplay() {
     bookItem.style.border = '1px solid'
     bookContainer.appendChild(bookItem);
   });
+
   const removeButtons = document.querySelectorAll('.remove-button');
   removeButtons.forEach(button => {
     button.addEventListener('click', removeBook);
+  });
+
+  const readButtons = document.querySelectorAll('.read-button');
+  readButtons.forEach(button => {
+    button.addEventListener('click', toggleReadStatus)
   });
 }
 
@@ -43,6 +49,14 @@ function removeBook(e) {
   const index = e.target.dataset.index;
   myLibrary.splice(index, 1);
   updateBookDisplay();
+}
+
+function toggleReadStatus(e){
+  const button = e.target
+  const buttonText = button.textContent.trim();
+  button.classList.toggle('not-read')
+  button.classList.toggle('read')
+
 }
 
 
