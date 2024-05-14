@@ -105,11 +105,3 @@ dialog.addEventListener("click", e => {
 
 
 
-
-const harryPotter = new Book('Harry Potter', 'JK Rowling', 343, false);
-const bigNate = new Book('Big Nate', 'Altay Hodo', 123, true);
-const smallNate = new Book('Small Nate', 'Hodo Altay', 122, true);
-addBookToLibrary(harryPotter);
-addBookToLibrary(bigNate);
-addBookToLibrary(smallNate);
-updateBookDisplay();
