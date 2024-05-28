@@ -2,8 +2,7 @@ const myLibrary = [];
 const bookContainer = document.querySelector('.book-container');
 const bookForm = document.querySelector('.book-form');
 
-
-class Book{
+class Book {
   constructor(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
@@ -27,11 +26,10 @@ function updateBookDisplay() {
     const bookItem = document.createElement('div');
     let readButtonText = '';
     let readButtonClass = '';
-    book.isRead ? readButtonText = 'Read' : readButtonText = 'Not read';
-    book.isRead ? readButtonClass = 'read' : readButtonClass = 'not-read';
+    book.isRead ? (readButtonText = 'Read') : (readButtonText = 'Not read');
+    book.isRead ? (readButtonClass = 'read') : (readButtonClass = 'not-read');
 
-    bookItem.innerHTML =
-      `
+    bookItem.innerHTML = `
       <div class="title"> ${book.title} </div>
       <div class="author"> ${book.author} </div>
       <div class="pages"> ${book.pages} pages </div>
@@ -43,13 +41,13 @@ function updateBookDisplay() {
   });
 
   const removeButtons = document.querySelectorAll('.remove-button');
-  removeButtons.forEach(button => {
+  removeButtons.forEach((button) => {
     button.addEventListener('click', removeBook);
   });
 
   const readButtons = document.querySelectorAll('.read-button');
-  readButtons.forEach(button => {
-    button.addEventListener('click', toggleReadStatus)
+  readButtons.forEach((button) => {
+    button.addEventListener('click', toggleReadStatus);
   });
 }
 
@@ -60,20 +58,18 @@ function removeBook(e) {
 }
 
 function toggleReadStatus(e) {
-  const button = e.target
+  const button = e.target;
   const buttonText = button.textContent.trim();
   if (buttonText == 'Not read') {
     button.textContent = 'Read';
   } else {
     button.textContent = 'Not read';
   }
-  button.classList.toggle('not-read')
-  button.classList.toggle('read')
-
+  button.classList.toggle('not-read');
+  button.classList.toggle('read');
 }
 
 const dialog = document.querySelector('.form-dialog');
-
 
 bookForm.addEventListener('submit', addNewBook);
 function addNewBook(e) {
@@ -87,17 +83,16 @@ function addNewBook(e) {
   updateBookDisplay();
   bookForm.reset();
   dialog.close();
-
 }
 
 const addBookButton = document.querySelector('.add-book-button');
-addBookButton.addEventListener('click', showDialog)
+addBookButton.addEventListener('click', showDialog);
 
 function showDialog() {
   dialog.showModal();
 }
 
-dialog.addEventListener("click", e => {
+dialog.addEventListener('click', (e) => {
   const dialogDimensions = dialog.getBoundingClientRect();
   if (
     e.clientX < dialogDimensions.left ||
@@ -108,8 +103,31 @@ dialog.addEventListener("click", e => {
     dialog.close();
     bookForm.reset();
   }
-})
+});
 
+// const title = document.getElementById('title');
+// title.addEventListener('input', (e) => {
+//   console.log(title.validity.valueMissing);
+//   if (title.validity.valueMissing) {
+//     title.setCustomValidity('Enter a title bozo');
+//   } else {
+//     title.setCustomValidity('');
+//   }
+// });
 
+const inputs = document.querySelectorAll(
+  'input[type="text"], input[type="email"], input[type="number"]'
+);
+console.log(inputs);
+inputs.forEach((input) => {
+  input.addEventListener('input', (e) => {
+    console.log(input.validity.valueMissing)
+    if (input.validity.valueMissing) {
+      input.setCustomValidity(`Enter a ${input.type} bozo`);
+    } else {
+      input.setCustomValidity('');
+    }
+  });
+});
 
 
